@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { SignUpRequestDto } from './dto/request';
-import { SignUpResponseDto } from './dto/response';
+import { SignInRequestDto, SignUpRequestDto } from './dto/request';
+import { SignInResponseDto, SignUpResponseDto } from './dto/response';
 import { UserRepository } from 'modules/data-access/repository';
 
 import * as bcrypt from 'bcrypt';
@@ -35,6 +35,15 @@ export class AuthService {
 
         return SignUpResponseDto.success();
 
+    }
+
+    aysnc signIn(dto: SignInRequestDto): Promise<SignInResponseDto | void> {
+        
+        const { email, password } = dto;
+
+        const isMatchedEmail = await this.userRepository.
+
+        return SignInResponseDto.success();
     }
 
 }
