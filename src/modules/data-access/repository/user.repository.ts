@@ -3,6 +3,7 @@ import { DataSource, Repository } from "typeorm";
 import { UserEntity } from "../entities";
 import { InjectRepository } from "@nestjs/typeorm";
 import { ResponseDto } from "types/classes";
+import { error } from "console";
 
 @Injectable()
 export default class UserRepository {
@@ -44,6 +45,16 @@ export default class UserRepository {
             ResponseDto.databaseError();
         }
     }
+
+    // async isMatchedEmail(email: string): Promise<boolean> {
+    //     try{
+    //         const result = await this.repository.find
+    //         return result;
+    //     }catch(excepiton){
+    //         this.logger.error(excepiton.message);
+    //         ResponseDto.databaseError();
+    //     }
+    // }
     
     async save(userEntity: UserEntity): Promise<void> {
         try{
